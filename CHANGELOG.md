@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
+## [v7.0.1] - 2022-01-16
+- Change *features* to be in a many-to-many relationship with plans. Multiple plans can have the same feature, and many plans can have many features as well
 
 ## [v6.1.0] - 2022-02-14
 - Update composer dependencies to Laravel v9
@@ -103,7 +105,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 - Drop PHP 7.1 travis test
 - Refactor migrations and artisan commands, and tweak service provider publishes functionality
 - Fix wrong container binding:
-  - app('rinvex.subscriptions.plan_features') => app('rinvex.subscriptions.plan_feature')
+  - app('rinvex.subscriptions.features') => app('rinvex.subscriptions.plan_feature')
   - app('rinvex.subscriptions.plan_subscriptions') => app('rinvex.subscriptions.plan_subscription')
 
 ## [v2.0.0] - 2019-03-03
