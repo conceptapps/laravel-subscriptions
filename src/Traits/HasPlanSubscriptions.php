@@ -97,6 +97,20 @@ trait HasPlanSubscriptions
     }
 
     /**
+     * Check if the subscriber subscribed to the given plan.
+     *
+     * @param int $planId
+     *
+     * @return \Rinvex\Subscriptions\Models\PlanSubscription|null
+     */
+    public function subscribedPan($planId): ?PlanSubscription
+    {
+        $subscription = $this->planSubscriptions()->where('plan_id', $planId)->first();
+
+        return $subscription;
+    }
+
+    /**
      * Subscribe subscriber to a new plan.
      *
      * @param string                            $subscription
