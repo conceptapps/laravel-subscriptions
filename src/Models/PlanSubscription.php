@@ -215,6 +215,16 @@ class PlanSubscription extends Model
     }
 
     /**
+     * Subscription has a plan
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function plan(): BelongsTo
+    {
+        return $this->belongsTo(config('rinvex.subscriptions.models.plan'), 'plan_id', 'id', 'plan');
+    }
+
+    /**
      * Check if subscription is active.
      *
      * @return bool
