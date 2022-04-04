@@ -219,7 +219,7 @@ class PlanSubscription extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function plan(): BelongsTo
+    public function plan(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(config('rinvex.subscriptions.models.plan'), 'plan_id', 'id', 'plan');
     }
