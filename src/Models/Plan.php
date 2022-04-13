@@ -97,6 +97,10 @@ class Plan extends Model implements Sortable
         'prorate_extend_due',
         'active_subscribers_limit',
         'sort_order',
+        'tag_text',
+        'tag_text_color',
+        'tag_bg_color',
+        'sku',
     ];
 
     /**
@@ -120,6 +124,10 @@ class Plan extends Model implements Sortable
         'active_subscribers_limit' => 'integer',
         'sort_order' => 'integer',
         'deleted_at' => 'datetime',
+        'tag_text' => 'string',
+        'tag_text_color' => 'string',
+        'tag_bg_color' => 'string',
+        'sku' => 'string',
     ];
 
     /**
@@ -138,6 +146,7 @@ class Plan extends Model implements Sortable
     public $translatable = [
         'name',
         'description',
+        'tag_text'
     ];
 
     /**
@@ -191,6 +200,10 @@ class Plan extends Model implements Sortable
             'prorate_period' => 'nullable|integer|max:150',
             'prorate_extend_due' => 'nullable|integer|max:150',
             'active_subscribers_limit' => 'nullable|integer|max:100000',
+            'tag_text' => 'nullable|string|max:32768',
+            'tag_text_color' => 'nullable|string|max:32768',
+            'tag_bg_color' => 'nullable|string|max:32768',
+            'sku' => 'nullable|string|max:32768',
         ]);
 
         parent::__construct($attributes);
