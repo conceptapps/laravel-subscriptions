@@ -329,7 +329,7 @@ class Plan extends Model implements Sortable
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeBySku(Builder $builder, string $sku): Builder
+    public function scopeBySku(\Illuminate\Database\Eloquent\Builder $builder, string $sku): \Illuminate\Database\Eloquent\Builder
     {
         return $builder->where('sku', $sku);
     }
