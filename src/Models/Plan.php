@@ -342,7 +342,7 @@ class Plan extends Model implements Sortable
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeBySlug(Builder $builder, string $slug): Builder
+    public function scopeBySlug(\Illuminate\Database\Eloquent\Builder $builder, string $slug): \Illuminate\Database\Eloquent\Builder
     {
         return $builder->where('slug', $slug);
     }
