@@ -71,6 +71,18 @@ trait HasPlanSubscriptions
     }
 
     /**
+     * Get a plan subscription by slug.
+     *
+     * @param string $subscriptionSku
+     *
+     * @return \Rinvex\Subscriptions\Models\PlanSubscription|null
+     */
+    public function planSubscriptionSku(string $subscriptionSku): ?PlanSubscription
+    {
+        return $this->planSubscriptions()->where('sku', $subscriptionSku)->first();
+    }
+
+    /**
      * Get subscribed plans.
      *
      * @return \Illuminate\Database\Eloquent\Collection
@@ -113,9 +125,9 @@ trait HasPlanSubscriptions
     /**
      * Subscribe subscriber to a new plan.
      *
-     * @param string                            $subscription
+     * @param string $subscription
      * @param \Rinvex\Subscriptions\Models\Plan $plan
-     * @param \Carbon\Carbon|null               $startDate
+     * @param \Carbon\Carbon|null $startDate
      *
      * @return \Rinvex\Subscriptions\Models\PlanSubscription
      */
@@ -125,11 +137,11 @@ trait HasPlanSubscriptions
         $period = new Period($plan->invoice_interval, $plan->invoice_period, $trial->getEndDate());
 
         return $this->planSubscriptions()->create([
-            'name' => $subscription,
-            'plan_id' => $plan->getKey(),
+            'name'          => $subscription,
+            'plan_id'       => $plan->getKey(),
             'trial_ends_at' => $trial->getEndDate(),
-            'starts_at' => $period->getStartDate(),
-            'ends_at' => $period->getEndDate(),
+            'starts_at'     => $period->getStartDate(),
+            'ends_at'       => $period->getEndDate(),
         ]);
     }
 }

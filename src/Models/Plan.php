@@ -320,4 +320,30 @@ class Plan extends Model implements Sortable
 
         return $this;
     }
+
+    /**
+     * Scope models by plan sku.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     * @param string                                $sku
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeBySku(Builder $builder, string $sku): Builder
+    {
+        return $builder->where('sku', $sku);
+    }
+
+    /**
+     * Scope models by plan slug.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     * @param string                                $slug
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeBySlug(Builder $builder, string $slug): Builder
+    {
+        return $builder->where('slug', $slug);
+    }
 }
