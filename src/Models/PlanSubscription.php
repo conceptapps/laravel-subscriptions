@@ -396,10 +396,12 @@ class PlanSubscription extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeFindEndingPeriod(Builder $builder, int $dayRange = 3): Builder
+    public function scopeFindEndingPeriod(Builder $builder, int $range = 3, string $interval = 'day'): Builder
     {
         $from = Carbon::now();
-        $to = Carbon::now()->addDays($dayRange);
+
+        $method = 'add'.ucfirst($interval).'s';
+        $to = Carbon::now()->{$method}($range);
 
         return $builder->whereBetween('ends_at', [$from, $to]);
     }
