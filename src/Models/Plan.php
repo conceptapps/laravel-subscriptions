@@ -124,7 +124,6 @@ class Plan extends Model implements Sortable
         'active_subscribers_limit' => 'integer',
         'sort_order' => 'integer',
         'deleted_at' => 'datetime',
-        'tag_text' => 'string',
         'tag_text_color' => 'string',
         'tag_bg_color' => 'string',
         'sku' => 'string',
