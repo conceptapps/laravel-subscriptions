@@ -191,7 +191,7 @@ class PlanSubscription extends Model
     {
         return SlugOptions::create()
                           ->doNotGenerateSlugsOnUpdate()
-                          ->generateSlugsFrom('name')
+                          ->generateSlugsFrom(['name','subscriber_id'])
                           ->saveSlugsTo('slug');
     }
 
