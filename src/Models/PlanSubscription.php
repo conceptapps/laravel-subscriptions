@@ -404,7 +404,7 @@ class PlanSubscription extends Model
         $method = 'add'.ucfirst($interval).'s';
         $to = Carbon::now()->{$method}($range);
 
-        return $builder->whereBetween('ends_at', [$from, $to]);
+        return $builder->whereBetween('ends_at', [min($from, $to),max($from, $to)]);
     }
 
     /**
