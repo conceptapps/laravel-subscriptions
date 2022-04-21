@@ -480,11 +480,15 @@ class PlanSubscription extends Model
      * @param string $featureSlug
      * @param int    $uses
      *
-     * @return \Rinvex\Subscriptions\Models\PlanSubscriptionUsage
+     * @return \Rinvex\Subscriptions\Models\PlanSubscriptionUsage|null
      */
-    public function recordFeatureUsage(string $featureSlug, int $uses = 1, bool $incremental = true): PlanSubscriptionUsage
+    public function recordFeatureUsage(string $featureSlug, int $uses = 1, bool $incremental = true): ?PlanSubscriptionUsage
     {
         $feature = $this->plan->features()->where('slug', $featureSlug)->first();
+
+        if(empty($feature)) {
+            return null;
+        }
 
         $usage = $this->usage()->firstOrNew([
             'subscription_id' => $this->getKey(),
